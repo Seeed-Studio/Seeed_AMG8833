@@ -13,7 +13,7 @@ Download all the source files.
 There are three examples for user.  
 >* **exambles/basic_demo.ino**,From this example,you can get the 64 channels(8X8) IR sensor raw data from serial-watch-window.  
 >* **exambles/TFT_screen_demo.ino**,From this example,we use a [TFT screen](https://www.seeedstudio.com/2.8-TFT-Touch-Shield-V2.0-p-1286.html) to show the 8X8 matrix data,Different data map different   colors.So we can make a simple、low resolution thermal imaging display system.Through this visual interface, you can see the results   very intuitively
->* **exambles/thermal_cam_interpolate/thermal_cam_interpolate.ino**,Use an interpolation algorithm to extend an 8*8 resolution gragh to a 32*32 resolution gragh.**But this example need more ram memory,doen't support the small ram arduino board like UNO.ATmega2560 or Arduino-M0 are OK.**  
+>* **exambles/thermal_cam_interpolate/thermal_cam_interpolate.ino**,Use an interpolation algorithm to extend an 8X8 resolution gragh to a 32X32 resolution gragh.**But this example need more ram memory,doen't support the small ram arduino board like UNO.ATmega2560 or Arduino-M0 are OK.**  
 
 In addition:  
 ---------------------
