@@ -1,0 +1,24 @@
+  
+#######################################
+# Syntax Coloring Map For Grove IR Matrix Temperature sensor AMG8833
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+KEYWORD1    AMG8833
+KEYWORD1    TFT
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+KEYWORD2    init
+KEYWORD2    read_pixel_temperature
+KEYWORD2    get_interrupt_status
+KEYWORD2    read_pixels_interrupt_status
+KEYWORD2    reset_flags
+KEYWORD2    TFTinit
+KEYWORD2    fillScreen
+#######################################
+# Constants (LITERAL1)
+#######################################
