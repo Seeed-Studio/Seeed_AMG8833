@@ -206,8 +206,8 @@ s32 AMG8833::init()
     u8 cfg_data_high_limit[]={0x80,0x00};
     /*0.25°C*/
     u8 cfg_data_low_limit[]={0x01,0x00};
-    /*31.75°C*/
-    u8 cfg_data_hysteresis[]={0x7f,0x00};
+    /*2°C,When temperature lower than (high_limit-hysteresis)(30-2=28℃),INT pin back to origin status. */
+    u8 cfg_data_hysteresis[]={0x08,0x00};
 
     /*Normal mode!!,if return none-zero,IIC communication error,return error code.*/
     ret=set_sensor_mode(NORMAL_MODE);
