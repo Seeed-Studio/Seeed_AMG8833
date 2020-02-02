@@ -1,33 +1,33 @@
 /*
- * Seeed_AMG8833_driver.h
- * Driver for DIGITAL I2C HUMIDITY AND TEMPERATURE SENSOR
- *  
- * Copyright (c) 2018 Seeed Technology Co., Ltd.
- * Website    : www.seeed.cc
- * Author     : downey
- * Create Time: May 2018
- * Change Log :
- *
- * The MIT License (MIT)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
+    Seeed_AMG8833_driver.h
+    Driver for DIGITAL I2C HUMIDITY AND TEMPERATURE SENSOR
+
+    Copyright (c) 2018 Seeed Technology Co., Ltd.
+    Website    : www.seeed.cc
+    Author     : downey
+    Create Time: May 2018
+    Change Log :
+
+    The MIT License (MIT)
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+*/
 #ifndef _SEEED_AMG8833_DRIER_H
 #define _SEEED_AMG8833_DRIER_H
 
@@ -39,9 +39,9 @@
 #define SEEED_DN_DEFINES
 
 #ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
-  #define SERIAL_DB SerialUSB
+    #define SERIAL_DB SerialUSB
 #else
-  #define SERIAL_DB Serial
+    #define SERIAL_DB Serial
 #endif
 
 
@@ -52,22 +52,21 @@ typedef unsigned short u16;
 typedef char           s8;
 typedef unsigned char  u8;
 
-typedef enum	
-{
-    NO_ERROR=0,
-    ERROR_PARAM=-1,
-    ERROR_COMM =-2,
-    ERROR_OTHERS=-128,
-}err_t;
+typedef enum {
+    NO_ERROR = 0,
+    ERROR_PARAM = -1,
+    ERROR_COMM = -2,
+    ERROR_OTHERS = -128,
+} err_t;
 
 
 #define CHECK_RESULT(a,b)   do{if(a=b)  {    \
-                            SERIAL_DB.print(__FILE__);    \
-                            SERIAL_DB.print(__LINE__);   \
-                            SERIAL_DB.print(" error code =");  \
-                            SERIAL_DB.println(a);                   \
-                            return a;   \
-                            }}while(0)
+            SERIAL_DB.print(__FILE__);    \
+            SERIAL_DB.print(__LINE__);   \
+            SERIAL_DB.print(" error code =");  \
+            SERIAL_DB.println(a);                   \
+            return a;   \
+        }}while(0)
 
 #endif
 
@@ -120,37 +119,37 @@ typedef enum
 
 #define DEFAULT_IIC_ADDR  0x68
 
-class AMG_IIC_OPRTS
-{
-    public:
-        void IIC_begin(){Wire.begin();}
-        s32 IIC_write_byte(u8 reg,u8 byte);
-        void IIC_read_byte(u8 reg,u8* byte);
-        void set_iic_addr(u8 IIC_ADDR);
-        void IIC_read_16bit(u8 start_reg,u16 *value);
-        s32 IIC_write_16bit(u8 reg,u16 value);
-    private:
-        u8 _IIC_ADDR;
+class AMG_IIC_OPRTS {
+  public:
+    void IIC_begin() {
+        Wire.begin();
+    }
+    s32 IIC_write_byte(u8 reg, u8 byte);
+    void IIC_read_byte(u8 reg, u8* byte);
+    void set_iic_addr(u8 IIC_ADDR);
+    void IIC_read_16bit(u8 start_reg, u16* value);
+    s32 IIC_write_16bit(u8 reg, u16 value);
+  private:
+    u8 _IIC_ADDR;
 };
 
 
-class AMG8833:public AMG_IIC_OPRTS
-{
-    public:
-        AMG8833(u8 addr = DEFAULT_IIC_ADDR);
-        s32 init();
-        s32 set_upper_limit(u8 value[]);
-        s32 reset_flags(u8 value);
-        s32 set_lower_limit(u8 value[]);
-        s32 set_sensor_mode(u8 mode);
-        s32 set_hysteresis(u8 value[]);
-        s32 clear_status(u8 value);
-        s32 set_interrupt_mode(u8 mode);
-        s32 set_frame_rate(u8 rate);
-        s32 read_pixel_temperature(float *pixel_data);
-        s32 get_interrupt_status();
-        s32 read_pixels_interrupt_status(u8 *status);
-        s32 read_pixel_temperature_reg_value(u16* value);
+class AMG8833: public AMG_IIC_OPRTS {
+  public:
+    AMG8833(u8 addr = DEFAULT_IIC_ADDR);
+    s32 init();
+    s32 set_upper_limit(u8 value[]);
+    s32 reset_flags(u8 value);
+    s32 set_lower_limit(u8 value[]);
+    s32 set_sensor_mode(u8 mode);
+    s32 set_hysteresis(u8 value[]);
+    s32 clear_status(u8 value);
+    s32 set_interrupt_mode(u8 mode);
+    s32 set_frame_rate(u8 rate);
+    s32 read_pixel_temperature(float* pixel_data);
+    s32 get_interrupt_status();
+    s32 read_pixels_interrupt_status(u8* status);
+    s32 read_pixel_temperature_reg_value(u16* value);
 };
 
 
