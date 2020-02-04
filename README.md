@@ -1,4 +1,4 @@
-Grove_IR_Matrix_Temperature_sensor_AMG8833
+Grove_IR_Matrix_Temperature_sensor_AMG8833  [![Build Status](https://travis-ci.com/Seeed-Studio/Seeed_AMG8833.svg?branch=master)](https://travis-ci.com/Seeed-Studio/Seeed_AMG8833)
 ==================  
 
 Introduction of sensor
