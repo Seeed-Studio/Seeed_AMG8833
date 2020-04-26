@@ -36,6 +36,7 @@
     @param IIC addr
  * */
 AMG8833::AMG8833(u8 addr) {
+    _isConnect = false;
     set_iic_addr(addr);
 }
 
@@ -194,6 +195,7 @@ s32 AMG8833::init() {
     /*Normal mode!!,if return none-zero,IIC communication error,return error code.*/
     ret = set_sensor_mode(NORMAL_MODE);
     if (ret != 0) {
+        _isConnect = false;
         return ret;
     }
     delay(30);
@@ -209,10 +211,11 @@ s32 AMG8833::init() {
     /*Reset all flag*/
     reset_flags(INIT_RESET_VALUE);
     delay(300);
+    _isConnect = true;
     return 0;
 }
 
-
+AMG8833::operator bool() { return _isConnect; }
 
 /**********************************************************************************************************/
 /************************************************IIC PART************************************************/

@@ -150,6 +150,9 @@ class AMG8833: public AMG_IIC_OPRTS {
     s32 get_interrupt_status();
     s32 read_pixels_interrupt_status(u8* status);
     s32 read_pixel_temperature_reg_value(u16* value);
+    operator bool();
+ private:
+    bool _isConnect; 
 };
 
 
