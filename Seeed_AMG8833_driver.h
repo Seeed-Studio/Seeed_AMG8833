@@ -38,7 +38,10 @@
 #ifndef SEEED_DN_DEFINES
 #define SEEED_DN_DEFINES
 
-#ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
+
+#ifdef SEEED_XIAO_M0
+    #define SERIAL_DB Serial
+#elif defined(ARDUINO_SAMD_VARIANT_COMPLIANCE)
     #define SERIAL_DB SerialUSB
 #else
     #define SERIAL_DB Serial
@@ -57,7 +60,7 @@ typedef enum {
     ERROR_PARAM = -1,
     ERROR_COMM = -2,
     ERROR_OTHERS = -128,
-} err_t;
+} amg_err_t;
 
 
 #define CHECK_RESULT(a,b)   do{if(a=b)  {    \

@@ -156,6 +156,7 @@ s32 AMG8833::read_pixel_temperature_reg_value(u16* value) {
         IIC_read_byte(TEMPERATURE_REG_ADDR_H + 2 * i, &val_h);
         value[i] = (u16)val_h << 8 | val_l;
     }
+    return 0;
 }
 
 /** @brief read pixels for 64 channel register data,convert to float data
